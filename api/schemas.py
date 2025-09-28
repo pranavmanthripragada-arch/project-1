@@ -16,6 +16,19 @@ class UserCreate(BaseModel):
     password: str
     role: RoleEnum
 
+class PPTSchema(BaseModel):
+    syllabus: str
+    standard: int
+    subject: str
+    chapter: str
+
+class PPTResponse(BaseModel):
+    ppt_url: str
+    syllabus: str
+    standard: int
+    subject: str
+    chapter: str
+
 class TokenData(BaseModel):
     user_id: Optional[int] = None
     standard: Optional[int] = None

@@ -9,7 +9,8 @@ from passlib.context import CryptContext
 from . import models
 from .schemas import UserCreate, RoleEnum
 from .database import engine, get_db
-from .routers import login
+from .routers import login, ppts
+from .config import supabase
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -41,6 +42,7 @@ app.add_middleware(
 )
 
 app.include_router(login.router)
+app.include_router(ppts.router)
 
 @app.get("/")
 def home():

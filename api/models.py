@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import relationship
 from sqlalchemy import Enum as SQLAlchemyEnum
 from .database import Base
@@ -41,3 +41,16 @@ class Chapter(Base):
     subject_id = Column(Integer, ForeignKey("Subjects.id"), nullable=False)
 
     subject = relationship("Subject", back_populates="chapters")
+
+class PPT(Base):
+    __tablename__ = "PPTs"
+    __table_args__ = (UniqueConstraint('subject', 'standard', 'chapter', name='unique_ppt_per_chapter'),)
+
+    id = Column(Integer, primary_key=True, index=True)
+    subject = Column(String, nullable=False)
+    standard = Column(Integer, nullable=False)
+    chapter = Column(String, nullable=False)
+    syllabus = Column(String, nullable=False)  # ncert or pseb
+    file_url = Column(String, nullable=False)
+    filename = Column(String, nullable=False)
+    file_path = Column(String, nullable=False)  # full path in storage
