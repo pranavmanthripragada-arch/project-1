@@ -70,6 +70,7 @@ const LandingPage: React.FC<{ onSelectRole: (role: UserRole) => void; isBilingua
 const LoginPage: React.FC<{ role: UserRole; onLogin: (user: User) => void; onBack: () => void; isBilingual: boolean; }> = ({ role, onLogin, onBack, isBilingual }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [classValue, setClassValue] = useState<number>(10);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -77,9 +78,9 @@ const LoginPage: React.FC<{ role: UserRole; onLogin: (user: User) => void; onBac
     e.preventDefault();
     setIsLoading(true);
     setError('');
-    
+
     try {
-        const user = await api.login(email, password, role);
+        const user = await api.login(email, password, role, role === UserRole.Student ? classValue : undefined);
         onLogin(user);
     } catch (err) {
         setError((err as Error).message);
@@ -134,6 +135,24 @@ const LoginPage: React.FC<{ role: UserRole; onLogin: (user: User) => void; onBac
             />
             <p className="text-xs text-slate-500">Hint: use password "123456"</p>
           </div>
+          {role === UserRole.Student && (
+            <div className="mb-6">
+              <label className="block text-slate-300 text-sm font-bold mb-2" htmlFor="class">
+                {isBilingual ? 'ਜਮਾਤ' : 'Class'}
+              </label>
+              <select
+                className="shadow appearance-none border border-slate-600 rounded w-full py-2 px-3 bg-slate-700 text-slate-200 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                id="class"
+                value={classValue}
+                onChange={(e) => setClassValue(Number(e.target.value))}
+                required
+              >
+                {Array.from({ length: 10 }, (_, i) => i + 1).map(c => (
+                  <option key={c} value={c}>{isBilingual ? `ਜਮਾਤ ${c}` : `Class ${c}`}</option>
+                ))}
+              </select>
+            </div>
+          )}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <Button type="submit" className="w-full sm:w-auto" isLoading={isLoading}>{isBilingual ? 'ਸਾਈਨ ਇਨ ਕਰੋ' : 'Sign In'}</Button>
             <button

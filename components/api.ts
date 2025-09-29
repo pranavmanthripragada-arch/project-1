@@ -16,7 +16,7 @@ const simulateRequest = <T>(data: T): Promise<T> => {
 };
 
 // --- AUTH ---
-export const login = (email: string, password: string, role: UserRole): Promise<User> => {
+export const login = (email: string, password: string, role: UserRole, classParam?: number): Promise<User> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             let userList: User[];
@@ -27,7 +27,11 @@ export const login = (email: string, password: string, role: UserRole): Promise<
             const user = userList.find(u => u.email.toLowerCase() === email.toLowerCase());
 
             if (user && password === '123456') {
-                resolve(user);
+                if (role === 'student' && user.class !== classParam) {
+                    reject(new Error('Invalid class. Please check your class and try again.'));
+                } else {
+                    resolve(user);
+                }
             } else {
                 reject(new Error('Invalid credentials. (Hint: use password "123456")'));
             }

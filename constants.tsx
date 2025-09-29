@@ -159,9 +159,9 @@ export const navItemsByRole = {
 
 // --- USERS ---
 export const STUDENTS: User[] = [
-  { id: 's1', name: 'Pranav', email: 'pranav@example.com', role: UserRole.Student, profilePicture: 'https://picsum.photos/seed/pranav/200', parentName: 'Mr. Kumar', parentPhone: '987-654-3210', teacherNotes: 'Pranav is strong in Physics but needs encouragement in Geometry. Discussed progress on May 15th.' },
-  { id: 's2', name: 'Nithin', email: 'nithin@example.com', role: UserRole.Student, profilePicture: 'https://picsum.photos/seed/nithin/200', parentName: 'Mrs. Reddy', parentPhone: '876-543-2109', teacherNotes: 'Nithin is very inquisitive. Needs to focus on completing assignments on time.' },
-  { id: 's3', name: 'DChai', email: 'dchai@gmail.com', role: UserRole.Student, profilePicture: 'https://picsum.photos/seed/dchai/200', parentName: 'Mr. Patel', parentPhone: '765-432-1098', teacherNotes: '' },
+  { id: 's1', name: 'Pranav', email: 'pranav@example.com', role: UserRole.Student, profilePicture: 'https://picsum.photos/seed/pranav/200', parentName: 'Mr. Kumar', parentPhone: '987-654-3210', teacherNotes: 'Pranav is strong in Physics but needs encouragement in Geometry. Discussed progress on May 15th.', class: 10 },
+  { id: 's2', name: 'Nithin', email: 'nithin@example.com', role: UserRole.Student, profilePicture: 'https://picsum.photos/seed/nithin/200', parentName: 'Mrs. Reddy', parentPhone: '876-543-2109', teacherNotes: 'Nithin is very inquisitive. Needs to focus on completing assignments on time.', class: 9 },
+  { id: 's3', name: 'DChai', email: 'dchai@gmail.com', role: UserRole.Student, profilePicture: 'https://picsum.photos/seed/dchai/200', parentName: 'Mr. Patel', parentPhone: '765-432-1098', teacherNotes: '', class: 8 },
 ];
 
 export const TEACHERS: User[] = [

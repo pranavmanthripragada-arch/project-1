@@ -20,6 +20,7 @@ export interface User {
   parentName?: string;
   parentPhone?: string;
   teacherNotes?: string;
+  class?: number;
 }
 
 export interface Question {

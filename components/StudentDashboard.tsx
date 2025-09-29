@@ -333,6 +333,7 @@ const DoubtsView: React.FC<{user: User, isBilingual: boolean, subjects: Subject[
     const [doubts, setDoubts] = useState<Doubt[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const fetchDoubts = () => {
         setIsLoading(true);
@@ -347,6 +348,17 @@ const DoubtsView: React.FC<{user: User, isBilingual: boolean, subjects: Subject[
         fetchDoubts();
     }, [user.id]);
 
+    const filteredDoubts = useMemo(() => {
+        if (!searchQuery.trim()) return doubts;
+        const query = searchQuery.toLowerCase();
+        return doubts.filter(doubt => {
+            const question = (isBilingual ? doubt.punjabiQuestion : doubt.question).toLowerCase();
+            const subject = (isBilingual ? doubt.punjabiSubject : doubt.subject).toLowerCase();
+            const chapter = (isBilingual ? doubt.punjabiChapter : doubt.chapter).toLowerCase();
+            return question.includes(query) || subject.includes(query) || chapter.includes(query);
+        });
+    }, [doubts, searchQuery, isBilingual]);
+
     const handlePostDoubt = async (newDoubtData: Omit<Doubt, 'id' | 'timestamp' | 'isResolved' | 'answer' | 'punjabiAnswer'>) => {
         await api.postDoubt(newDoubtData);
         setIsModalOpen(false);
@@ -357,7 +369,7 @@ const DoubtsView: React.FC<{user: User, isBilingual: boolean, subjects: Subject[
         return (
             <div>
                  <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-xl md:text-2xl font-bold text-indigo-400">{isBilingual ? 'ਮੇਰੇ ਸ਼ੱਕ' : 'My Doubts'}</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-indigo-400">{isBilingual ? 'ਮੇਰੇ ਸ਼ੱਕ' : ''}</h2>
                      <Button onClick={() => setIsModalOpen(true)}>{isBilingual ? 'ਨਵਾਂ ਸ਼ੱਕ ਪੋਸਟ ਕਰੋ' : 'Post New Doubt'}</Button>
                 </div>
                  <SkeletonCard count={2} />
@@ -371,8 +383,17 @@ const DoubtsView: React.FC<{user: User, isBilingual: boolean, subjects: Subject[
                 <h2 className="text-xl md:text-2xl font-bold text-indigo-400">{isBilingual ? 'ਮੇਰੇ ਸ਼ੱਕ' : 'My Doubts'}</h2>
                 <Button onClick={() => setIsModalOpen(true)}>{isBilingual ? 'ਨਵਾਂ ਸ਼ੱਕ ਪੋਸਟ ਕਰੋ' : 'Post New Doubt'}</Button>
             </div>
+            <div className="mb-6">
+                <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    placeholder={isBilingual ? 'ਸ਼ੱਕ ਖੋਜੋ...' : 'Search doubts...'}
+                    className="w-full bg-slate-700 p-2 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                />
+            </div>
              <div className="space-y-4">
-                {doubts.length > 0 ? doubts.map(doubt => (
+                {filteredDoubts.length > 0 ? filteredDoubts.map(doubt => (
                     <Card key={doubt.id}>
                         <div className="flex justify-between items-start">
                            <div className="flex-1">
@@ -394,8 +415,14 @@ const DoubtsView: React.FC<{user: User, isBilingual: boolean, subjects: Subject[
                     </Card>
                 )) : (
                     <Card className="text-center text-slate-500">
-                        <p>{isBilingual ? 'ਤੁਸੀਂ ਅਜੇ ਤੱਕ ਕੋਈ ਸ਼ੱਕ ਪੋਸਟ ਨਹੀਂ ਕੀਤਾ ਹੈ।' : 'You haven\'t posted any doubts yet.'}</p>
-                        <p>{isBilingual ? 'ਕੋਈ ਸਵਾਲ ਪੁੱਛਣ ਲਈ ਉੱਪਰ ਦਿੱਤੇ ਬਟਨ \'ਤੇ ਕਲਿੱਕ ਕਰੋ!' : 'Click the button above to ask a question!'}</p>
+                        {searchQuery.trim() ? (
+                            <p>{isBilingual ? 'ਕੋਈ ਸ਼ੱਕ ਨਹੀਂ ਮਿਲਿਆ।' : 'No doubts found.'}</p>
+                        ) : (
+                            <>
+                                <p>{isBilingual ? 'ਤੁਸੀਂ ਅਜੇ ਤੱਕ ਕੋਈ ਸ਼ੱਕ ਪੋਸਟ ਨਹੀਂ ਕੀਤਾ ਹੈ।' : 'You haven\'t posted any doubts yet.'}</p>
+                                <p>{isBilingual ? 'ਕੋਈ ਸਵਾਲ ਪੁੱਛਣ ਲਈ ਉੱਪਰ ਦਿੱਤੇ ਬਟਨ \'ਤੇ ਕਲਿੱਕ ਕਰੋ!' : 'Click the button above to ask a question!'}</p>
+                            </>
+                        )}
                     </Card>
                 )}
              </div>
@@ -649,14 +676,16 @@ const ReportsView: React.FC<{user: User, isBilingual: boolean, allSubjects: Subj
         let totalQuizzes = 0;
 
         for (const [quizId, score] of Object.entries(performance.quizScores)) {
+            const numericScore = Number(score);
+            if (isNaN(numericScore)) continue;
             const subject = getSubjectFromQuizId(quizId);
             if (subject) {
                 if (!subjectScores[subject.name]) {
                     subjectScores[subject.name] = { totalScore: 0, count: 0, punjabiName: subject.punjabiName };
                 }
-                subjectScores[subject.name].totalScore += score;
+                subjectScores[subject.name].totalScore += numericScore;
                 subjectScores[subject.name].count += 1;
-                totalScore += score;
+                totalScore += numericScore;
                 totalQuizzes++;
             }
         }

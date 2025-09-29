@@ -182,7 +182,7 @@ const StudentProgressView: React.FC = () => {
     const chartData = useMemo(() => {
         return students.map(student => {
             const performance = performances.find(p => p.studentId === student.id);
-            const totalScore = performance ? Object.values(performance.quizScores).reduce((sum, score) => sum + score, 0) : 0;
+            const totalScore = performance ? Object.values(performance.quizScores as Record<string, number>).reduce((sum: number, score: number) => sum + score, 0) : 0;
             const quizzesTaken = performance ? Object.keys(performance.quizScores).length : 0;
             return {
                 name: student.name.split(' ')[0], // Use first name for smaller screens
@@ -251,19 +251,36 @@ const StudentProgressView: React.FC = () => {
 // --- Student Info View ---
 const StudentInfoView: React.FC<{ isBilingual: boolean }> = ({ isBilingual }) => {
     const [students, setStudents] = useState<User[]>([]);
+    const [filteredStudents, setFilteredStudents] = useState<User[]>([]);
     const [selectedStudent, setSelectedStudent] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         api.getStudents().then(data => {
             setStudents(data);
+            setFilteredStudents(data);
             setIsLoading(false);
         });
     }, []);
 
+    useEffect(() => {
+        if (!searchQuery.trim()) {
+            setFilteredStudents(students);
+            return;
+        }
+        const query = searchQuery.toLowerCase();
+        const filtered = students.filter(student =>
+            student.name.toLowerCase().includes(query) ||
+            student.email.toLowerCase().includes(query)
+        );
+        setFilteredStudents(filtered);
+    }, [searchQuery, students]);
+
     const handleStudentUpdate = (updatedStudent: User) => {
         // Update the student in the main list so notes are persisted without re-fetch
         setStudents(prev => prev.map(s => s.id === updatedStudent.id ? updatedStudent : s));
+        setFilteredStudents(prev => prev.map(s => s.id === updatedStudent.id ? updatedStudent : s));
         setSelectedStudent(updatedStudent); // also update the selected student
     };
 
@@ -278,8 +295,17 @@ const StudentInfoView: React.FC<{ isBilingual: boolean }> = ({ isBilingual }) =>
     return (
         <Card>
             <h2 className="text-xl md:text-2xl font-bold mb-6 text-indigo-400">{isBilingual ? 'ਸਾਰੇ ਵਿਦਿਆਰਥੀ' : 'All Students'}</h2>
+            <div className="mb-6">
+                <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    placeholder={isBilingual ? 'ਵਿਦਿਆਰਥੀਆਂ ਨੂੰ ਖੋਜੋ...' : 'Search students...'}
+                    className="w-full bg-slate-700 p-2 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {students.map(student => (
+                {filteredStudents.map(student => (
                     <div key={student.id} className="bg-slate-800/50 p-4 rounded-lg flex flex-col items-center text-center">
                         <img src={student.profilePicture} alt={student.name} className="w-24 h-24 rounded-full mb-4 border-4 border-slate-700" />
                         <h3 className="font-bold text-lg">{student.name}</h3>
@@ -288,6 +314,9 @@ const StudentInfoView: React.FC<{ isBilingual: boolean }> = ({ isBilingual }) =>
                     </div>
                 ))}
             </div>
+            {searchQuery.trim() && filteredStudents.length === 0 && (
+                <p className="text-center text-slate-400 mt-4">{isBilingual ? 'ਕੋਈ ਵਿਦਿਆਰਥੀ ਨਹੀਂ ਮਿਲਿਆ।' : 'No students found.'}</p>
+            )}
         </Card>
     );
 };
@@ -460,6 +489,7 @@ const DoubtsSection: React.FC<{isBilingual: boolean}> = ({ isBilingual }) => {
     const [replyingTo, setReplyingTo] = useState<Doubt | null>(null);
     const [replyText, setReplyText] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const fetchDoubts = () => {
         setIsLoading(true);
@@ -483,6 +513,17 @@ const DoubtsSection: React.FC<{isBilingual: boolean}> = ({ isBilingual }) => {
         fetchDoubts();
     }, []);
 
+    const filteredDoubts = useMemo(() => {
+        if (!searchQuery.trim()) return doubts;
+        const query = searchQuery.toLowerCase();
+        return doubts.filter(doubt => {
+            const question = (isBilingual ? doubt.punjabiQuestion : doubt.question).toLowerCase();
+            const subject = (isBilingual ? doubt.punjabiSubject : doubt.subject).toLowerCase();
+            const chapter = (isBilingual ? doubt.punjabiChapter : doubt.chapter).toLowerCase();
+            return question.includes(query) || subject.includes(query) || chapter.includes(query);
+        });
+    }, [doubts, searchQuery, isBilingual]);
+
     const handleReplySubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!replyingTo || !replyText.trim()) return;
@@ -504,9 +545,18 @@ const DoubtsSection: React.FC<{isBilingual: boolean}> = ({ isBilingual }) => {
     return (
         <div>
             <h2 className="text-xl md:text-2xl font-bold mb-6 text-indigo-400">{isBilingual ? 'ਸ਼ੱਕ ਭਾਗ' : 'Doubt Section'}</h2>
+            <div className="mb-6">
+                <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    placeholder={isBilingual ? 'ਸ਼ੱਕ ਖੋਜੋ...' : 'Search doubts...'}
+                    className="w-full bg-slate-700 p-2 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                />
+            </div>
             {isLoading ? <SkeletonCard count={3}/> : (
                 <div className="space-y-4">
-                    {doubts.map(doubt => {
+                    {filteredDoubts.map(doubt => {
                         const student = students.find(s => s.id === doubt.studentId);
                         return (
                             <Card key={doubt.id}>

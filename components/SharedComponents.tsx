@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({ user, onLogout, isBilingual, onT
             <div className="w-full md:w-auto">
                 <h1 className="text-2xl lg:text-3xl font-bold text-white">{title || `Welcome, ${user.name}!`}</h1>
                 <p className="text-xs lg:text-sm text-slate-400">
-                {user.role === UserRole.Student && `Board: ${stream?.toUpperCase()} | Let's learn something new today.`}
+                {user.role === UserRole.Student && `Board: ${stream?.toUpperCase()}${user.class ? ` | Class: ${user.class}` : ''} | Let's learn something new today.`}
                 {user.role === UserRole.Teacher && "Manage your classes and students."}
                 {user.role === UserRole.Admin && "Oversee the educational ecosystem."}
                 </p>
