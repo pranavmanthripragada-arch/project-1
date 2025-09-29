@@ -140,16 +140,57 @@ const LessonsView: React.FC<{isBilingual: boolean, subjects: Subject[]}> = ({isB
                         {selectedChapter ? (
                             <div>
                                 <h2 className="text-xl md:text-2xl font-bold mb-4 text-indigo-400">{isBilingual ? selectedChapter.punjabiTitle : selectedChapter.title}</h2>
-                                <div className="aspect-video bg-black rounded-lg mb-4 overflow-hidden">
-                                     <iframe
+                                <div className="aspect-video bg-black rounded-lg mb-4 overflow-hidden flex flex-col">
+                                    <video
                                         key={selectedChapter.videoUrl}
-                                        className="w-full h-full"
-                                        src={selectedChapter.videoUrl}
-                                        title="YouTube video player"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
+                                        className="w-full h-full rounded-lg bg-slate-800 object-contain
+                                                [&::-webkit-media-controls-panel]:bg-[rgba(15,23,42,0.8)]
+                                                [&::-webkit-media-controls-play-button]:text-indigo-400 
+                                                [&::-webkit-media-controls-timeline]:text-indigo-400 
+                                                [&::-webkit-media-controls-current-time-display]:text-slate-200 
+                                                [&::-webkit-media-controls-time-remaining-display]:text-slate-200
+                                                [&::-webkit-media-controls-timeline]:bg-indigo-500"
+                                        src="/assets/ppt/algebra.mp4"
+                                        controls
+                                        controlsList="nodownload"
+                                        playsInline
+                                        ref={(el) => {
+                                            if (el) {
+                                                // Store video element reference for time control
+                                                (window as any).videoElement = el;
+                                            }
+                                        }}
+                                    />
+                                    <div className="flex justify-center gap-4 py-3 bg-slate-800 border-t border-slate-700">
+                                        <button
+                                            onClick={() => {
+                                                const video = (window as any).videoElement as HTMLVideoElement;
+                                                if (video) {
+                                                    video.currentTime = Math.max(0, video.currentTime - 5);
+                                                }
+                                            }}
+                                            className="flex items-center gap-2 px-4 py-2 rounded-md bg-slate-700 hover:bg-slate-600 transition-colors text-slate-200"
+                                        >
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l-7-7 7-7m5 14l-7-7 7-7" />
+                                            </svg>
+                                            -5s
+                                        </button>
+                                        <button
+                                            onClick={() => {
+                                                const video = (window as any).videoElement as HTMLVideoElement;
+                                                if (video) {
+                                                    video.currentTime = Math.min(video.duration, video.currentTime + 5);
+                                                }
+                                            }}
+                                            className="flex items-center gap-2 px-4 py-2 rounded-md bg-slate-700 hover:bg-slate-600 transition-colors text-slate-200"
+                                        >
+                                            +5s
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5l7 7-7 7m-5-14l7 7-7 7" />
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                                 <p className="text-slate-400 mb-6 text-sm md:text-base">Watch the lecture to understand the concepts before attempting the quiz.</p>
                                 <div className="flex flex-col sm:flex-row gap-4">
