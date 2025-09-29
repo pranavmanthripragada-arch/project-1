@@ -9,7 +9,7 @@ from passlib.context import CryptContext
 from . import models
 from .schemas import UserCreate, RoleEnum
 from .database import engine, get_db
-from .routers import login, ppts
+from .routers import login, ppts, courses, quiz
 from .config import supabase
 
 @asynccontextmanager
@@ -43,12 +43,14 @@ app.add_middleware(
 
 app.include_router(login.router)
 app.include_router(ppts.router)
+app.include_router(courses.router)
+app.include_router(quiz.router)
 
 @app.get("/")
 def home():
     return {"message": "Read docs at /docs"}
 
-@app.api_route("/db-health", methods=["GET", "HEAD"], status_code=status.HTTP_200_OK)
+@app.get("/db-health", status_code=status.HTTP_200_OK)
 async def db_health_check():
     try:
         with engine.connect() as conn:

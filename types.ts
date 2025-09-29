@@ -1,3 +1,4 @@
+import React, { ComponentType } from 'react';
 
 export enum UserRole {
   Student = 'student',
@@ -26,9 +27,21 @@ export interface User {
 export interface Question {
   id: string;
   text: string;
+  punjabiText: string;
   type: 'mcq' | 'fill-in-the-blank' | 'short-answer';
   options?: string[]; // For MCQ
+  punjabiOptions?: string[]; // For MCQ in Punjabi
   correctAnswer: number | string; // Index for MCQ, string for others
+}
+
+export interface QuizQuestion {
+  id: string;
+  text: string;
+  punjabiText: string;
+  type: 'mcq' | 'fill-in-the-blank';
+  options?: string[];
+  punjabiOptions?: string[];
+  correctAnswer: number | string;
 }
 
 export interface Quiz {
@@ -52,9 +65,9 @@ export interface Subject {
   id: string;
   name: string;
   punjabiName: string;
-  icon: React.ComponentType<{ className?: string }>;
-  chapters: Chapter[];
+  icon: ComponentType<{ className?: string }>;
   stream: Stream;
+  chapters: Chapter[];
 }
 
 export interface Doubt {
@@ -157,4 +170,22 @@ export interface MotivationalStory {
     imageUrl: string;
     story: string;
     punjabiStory: string;
+}
+
+export interface Teacher {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole.Teacher;
+  subject: string;
+  punjabiSubject: string;
+  icon: ComponentType<{ className?: string }>;
+}
+
+export interface Admin {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole.Admin;
+  icon: ComponentType<{ className?: string }>;
 }

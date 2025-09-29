@@ -66,3 +66,31 @@ def teacher_login(request: OAuth2PasswordRequestForm = Depends(), db: Session=De
 @router.get("/hash_password")
 def hash_pwd(request: str):
     return {"hashed_password": pwd_context.hash(request)}
+
+def get_current_user(token: str = Depends(oauth2_scheme)):
+    cred_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                                   detail="Invalid authorization credentials",
+                                   headers={'WWW-AUTHENTICATE': "Bearer"})
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[JWT_ALGORITHM])
+        user_id: int = payload.get("user_id")
+        role: str = payload.get("role")
+        standard: int = payload.get("standard")  # For students
+        subject: str = payload.get("subject")    # For teachers
+        
+        if user_id is None or role is None:
+            raise cred_exception
+            
+        return schemas.TokenData(user_id=user_id, role=role, standard=standard, subject=subject)
+    except JWTError:
+        raise cred_exception
+
+def teacher_only(current_user: schemas.TokenData = Depends(get_current_user)):
+    if current_user.role != schemas.RoleEnum.teacher:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Teacher access required")
+    return current_user
+
+def student_only(current_user: schemas.TokenData = Depends(get_current_user)):
+    if current_user.role != schemas.RoleEnum.student:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Student access required")
+    return current_user

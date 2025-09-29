@@ -174,11 +174,142 @@ export const ADMINS: User[] = [
 ];
 
 // --- QUIZZES ---
-const MATH_QUIZ_1: Quiz = { id: 'mq1', title: 'Algebra Basics Quiz', punjabiTitle: 'ਅਲਜਬਰਾ ਬੇਸਿਕਸ ਕਵਿਜ਼', questions: [{ id: 'q1', text: 'What is 2x + 3x?', type: 'mcq', options: ['4x', '5x', '6x'], correctAnswer: 1 }] };
-const PHYSICS_QUIZ_1: Quiz = { id: 'pq1', title: 'Laws of Motion Quiz', punjabiTitle: 'ਗਤੀ ਦੇ ਨਿਯਮ ਕਵਿਜ਼', questions: [{ id: 'q1', text: "Which law is known as the law of inertia?", type: 'mcq', options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law"], correctAnswer: 0 }] };
-const CHEMISTRY_QUIZ_1: Quiz = { id: 'cq1', title: 'Periodic Table Quiz', punjabiTitle: 'ਆਵਰਤੀ ਸਾਰਣੀ ਕਵਿਜ਼', questions: [{ id: 'q1', text: 'What is the symbol for Gold?', type: 'mcq', options: ['Ag', 'Au', 'G'], correctAnswer: 1 }] };
-const BIOLOGY_QUIZ_1: Quiz = { id: 'bq1', title: 'Cell Structure Quiz', punjabiTitle: 'ਸੈੱਲ ਬਣਤਰ ਕਵਿਜ਼', questions: [{ id: 'q1', text: 'What is the powerhouse of the cell?', type: 'mcq', options: ['Nucleus', 'Ribosome', 'Mitochondria'], correctAnswer: 2 }] };
-const PUNJABI_QUIZ_1: Quiz = { id: 'puq1', title: 'Punjabi Grammar Quiz', punjabiTitle: 'ਪੰਜਾਬੀ ਵਿਆਕਰਨ ਕਵਿਜ਼', questions: [{ id: 'q1', text: 'ਕ੍ਰਿਆ ਕੀ ਹੈ?', type: 'mcq', options: ['ਨਾਮ', 'ਪੜਨਾਂਵ', 'ਕੰਮ'], correctAnswer: 2 }] };
+const MATH_QUIZ_1: Quiz = {
+    id: 'mq1',
+    title: 'Algebra Basics Quiz',
+    punjabiTitle: 'ਅਲਜਬਰਾ ਬੇਸਿਕਸ ਕਵਿਜ਼',
+    questions: [
+        { id: 'mq1q1', text: 'What is 2x + 3x?', punjabiText: '2x + 3x ਕੀ ਹੈ?', type: 'mcq', options: ['4x', '5x', '6x'], punjabiOptions: ['4x', '5x', '6x'], correctAnswer: 1 },
+        { id: 'mq1q2', text: 'Solve for x: x + 5 = 12', punjabiText: 'x ਲਈ ਹੱਲ ਕਰੋ: x + 5 = 12', type: 'mcq', options: ['5', '6', '7'], punjabiOptions: ['5', '6', '7'], correctAnswer: 2 },
+        { id: 'mq1q3', text: 'Simplify: 4(a + 3)', punjabiText: 'ਸਰਲ ਕਰੋ: 4(a + 3)', type: 'mcq', options: ['4a + 7', '4a + 12', 'a + 12'], punjabiOptions: ['4a + 7', '4a + 12', 'a + 12'], correctAnswer: 1 },
+        { id: 'mq1q4', text: 'What is the value of y if y = 3x - 2 and x = 4?', punjabiText: 'y ਦਾ ਮੁੱਲ ਕੀ ਹੈ ਜੇ y = 3x - 2 ਅਤੇ x = 4?', type: 'mcq', options: ['10', '12', '14'], punjabiOptions: ['10', '12', '14'], correctAnswer: 0 },
+        { id: 'mq1q5', text: 'Combine like terms: 5a + 2b - 3a + 4b', punjabiText: 'ਇੱਕੋ ਜਿਹੇ ਪਦਾਂ ਨੂੰ ਮਿਲਾਓ: 5a + 2b - 3a + 4b', type: 'mcq', options: ['2a + 6b', '8a + 6b', '2a - 2b'], punjabiOptions: ['2a + 6b', '8a + 6b', '2a - 2b'], correctAnswer: 0 },
+        { id: 'mq1q6', text: 'What is (-3)^2?', punjabiText: '(-3)^2 ਕੀ ਹੈ?', type: 'mcq', options: ['-9', '9', '-6'], punjabiOptions: ['-9', '9', '-6'], correctAnswer: 1 },
+        { id: 'mq1q7', text: 'Solve for b: 2b = 18', punjabiText: 'b ਲਈ ਹੱਲ ਕਰੋ: 2b = 18', type: 'mcq', options: ['9', '16', '36'], punjabiOptions: ['9', '16', '36'], correctAnswer: 0 },
+        { id: 'mq1q8', text: 'Expand: (x + 2)(x + 3)', punjabiText: 'ਵਿਸਤਾਰ ਕਰੋ: (x + 2)(x + 3)', type: 'mcq', options: ['x^2 + 6', 'x^2 + 5x + 6', 'x^2 + 6x + 5'], punjabiOptions: ['x^2 + 6', 'x^2 + 5x + 6', 'x^2 + 6x + 5'], correctAnswer: 1 },
+        { id: 'mq1q9', text: 'What is the coefficient of x in the term -7x?', punjabiText: '-7x ਪਦ ਵਿੱਚ x ਦਾ ਗੁਣਾਂਕ ਕੀ ਹੈ?', type: 'mcq', options: ['7', '-7', 'x'], punjabiOptions: ['7', '-7', 'x'], correctAnswer: 1 },
+        { id: 'mq1q10', text: 'If 2x - 3 = 7, what is x?', punjabiText: 'ਜੇ 2x - 3 = 7, ਤਾਂ x ਕੀ ਹੈ?', type: 'mcq', options: ['4', '5', '6'], punjabiOptions: ['4', '5', '6'], correctAnswer: 1 },
+        { id: 'mq1q11', text: 'Simplify: 10x / 2', punjabiText: 'ਸਰਲ ਕਰੋ: 10x / 2', type: 'mcq', options: ['5x', '8x', '5'], punjabiOptions: ['5x', '8x', '5'], correctAnswer: 0 },
+        { id: 'mq1q12', text: 'What is the next term in the sequence: 2, 4, 6, 8, ...?', punjabiText: 'ਇਸ ਲੜੀ ਵਿੱਚ ਅਗਲਾ ਪਦ ਕੀ ਹੈ: 2, 4, 6, 8, ...?', type: 'mcq', options: ['9', '10', '12'], punjabiOptions: ['9', '10', '12'], correctAnswer: 1 },
+        { id: 'mq1q13', text: 'Factorize: x^2 - 9', punjabiText: 'ਗੁਣਨਖੰਡ ਬਣਾਓ: x^2 - 9', type: 'mcq', options: ['(x-3)(x-3)', '(x+3)(x+3)', '(x-3)(x+3)'], punjabiOptions: ['(x-3)(x-3)', '(x+3)(x+3)', '(x-3)(x+3)'], correctAnswer: 2 },
+        { id: 'mq1q14', text: 'Solve for y: y/3 = 4', punjabiText: 'y ਲਈ ਹੱਲ ਕਰੋ: y/3 = 4', type: 'mcq', options: ['7', '1', '12'], punjabiOptions: ['7', '1', '12'], correctAnswer: 2 },
+        { id: 'mq1q15', text: 'What is the value of 5^0?', punjabiText: '5^0 ਦਾ ਮੁੱਲ ਕੀ ਹੈ?', type: 'mcq', options: ['5', '0', '1'], punjabiOptions: ['5', '0', '1'], correctAnswer: 2 },
+        { id: 'mq1q16', text: 'Simplify: 3x + y - x + 2y', punjabiText: 'ਸਰਲ ਕਰੋ: 3x + y - x + 2y', type: 'mcq', options: ['2x + 3y', '4x + 3y', '2x + 2y'], punjabiOptions: ['2x + 3y', '4x + 3y', '2x + 2y'], correctAnswer: 0 },
+        { id: 'mq1q17', text: 'If a = 2 and b = 3, what is a + b?', punjabiText: 'ਜੇ a = 2 ਅਤੇ b = 3, ਤਾਂ a + b ਕੀ ਹੈ?', type: 'mcq', options: ['5', '6', '4'], punjabiOptions: ['5', '6', '4'], correctAnswer: 0 },
+        { id: 'mq1q18', text: 'What is the square root of 64?', punjabiText: '64 ਦਾ ਵਰਗਮੂਲ ਕੀ ਹੈ?', type: 'mcq', options: ['6', '7', '8'], punjabiOptions: ['6', '7', '8'], correctAnswer: 2 },
+        { id: 'mq1q19', text: 'Solve for z: 4z = 20', punjabiText: 'z ਲਈ ਹੱਲ ਕਰੋ: 4z = 20', type: 'mcq', options: ['4', '5', '6'], punjabiOptions: ['4', '5', '6'], correctAnswer: 1 },
+        { id: 'mq1q20', text: 'Expand: 2(x - 5)', punjabiText: 'ਵਿਸਤਾਰ ਕਰੋ: 2(x - 5)', type: 'mcq', options: ['2x - 5', '2x - 10', 'x - 10'], punjabiOptions: ['2x - 5', '2x - 10', 'x - 10'], correctAnswer: 1 }
+    ]
+};
+const PHYSICS_QUIZ_1: Quiz = {
+    id: 'pq1',
+    title: 'Laws of Motion Quiz',
+    punjabiTitle: 'ਗਤੀ ਦੇ ਨਿਯਮ ਕਵਿਜ਼',
+    questions: [
+        { id: 'pq1q1', text: "Which law is known as the law of inertia?", punjabiText: "ਕਿਹੜਾ ਨਿਯਮ ਜੜਤਾ ਦਾ ਨਿਯਮ ਵਜੋਂ ਜਾਣਿਆ ਜਾਂਦਾ ਹੈ?", type: 'mcq', options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law"], punjabiOptions: ["ਨਿਊਟਨ ਦਾ ਪਹਿਲਾ ਨਿਯਮ", "ਨਿਊਟਨ ਦਾ ਦੂਜਾ ਨਿਯਮ", "ਨਿਊਟਨ ਦਾ ਤੀਜਾ ਨਿਯਮ"], correctAnswer: 0 },
+        { id: 'pq1q2', text: 'What is the formula for force?', punjabiText: 'ਬਲ ਦਾ ਫਾਰਮੂਲਾ ਕੀ ਹੈ?', type: 'mcq', options: ['F = ma', 'F = m/a', 'F = a/m'], punjabiOptions: ['F = ma', 'F = m/a', 'F = a/m'], correctAnswer: 0 },
+        { id: 'pq1q3', text: 'For every action, there is an equal and opposite...', punjabiText: 'ਹਰ ਕਿਰਿਆ ਲਈ, ਇੱਕ ਬਰਾਬਰ ਅਤੇ ਉਲਟ...', type: 'mcq', options: ['force', 'reaction', 'mass'], punjabiOptions: ['ਬਲ', 'ਪ੍ਰਤੀਕਿਰਿਆ', 'ਪੁੰਜ'], correctAnswer: 1 },
+        { id: 'pq1q4', text: 'What is the unit of force?', punjabiText: 'ਬਲ ਦੀ ਇਕਾਈ ਕੀ ਹੈ?', type: 'mcq', options: ['Joule', 'Watt', 'Newton'], punjabiOptions: ['ਜੂਲ', 'ਵਾਟ', 'ਨਿਊਟਨ'], correctAnswer: 2 },
+        { id: 'pq1q5', text: 'A book resting on a table is an example of:', punjabiText: 'ਮੇਜ਼ ਉੱਤੇ ਪਈ ਇੱਕ ਕਿਤਾਬ ਇਸਦੀ ਇੱਕ ਉਦਾਹਰਣ ਹੈ:', type: 'mcq', options: ['Balanced forces', 'Unbalanced forces', 'Friction'], punjabiOptions: ['ਸੰਤੁਲਿਤ ਬਲ', 'ਅਸੰਤੁਲਿਤ ਬਲ', 'ਰਗੜ'], correctAnswer: 0 },
+        { id: 'pq1q6', text: 'What does "m" represent in F=ma?', punjabiText: 'F=ma ਵਿੱਚ "m" ਕੀ ਦਰਸਾਉਂਦਾ ਹੈ?', type: 'mcq', options: ['Momentum', 'Mass', 'Meters'], punjabiOptions: ['ਗਤੀ', 'ਪੁੰਜ', 'ਮੀਟਰ'], correctAnswer: 1 },
+        { id: 'pq1q7', text: 'What does "a" represent in F=ma?', punjabiText: 'F=ma ਵਿੱਚ "a" ਕੀ ਦਰਸਾਉਂਦਾ ਹੈ?', type: 'mcq', options: ['Acceleration', 'Action', 'Amplitude'], punjabiOptions: ['ਪ੍ਰਵੇਗ', 'ਕਿਰਿਆ', 'ਵਿਸਤਾਰ'], correctAnswer: 0 },
+        { id: 'pq1q8', text: 'If you push a wall, the wall pushes back on you. This is an example of which law?', punjabiText: 'ਜੇ ਤੁਸੀਂ ਇੱਕ ਕੰਧ ਨੂੰ ਧੱਕਦੇ ਹੋ, ਤਾਂ ਕੰਧ ਤੁਹਾਨੂੰ ਵਾਪਸ ਧੱਕਦੀ ਹੈ। ਇਹ ਕਿਸ ਨਿਯਮ ਦੀ ਉਦਾਹਰਣ ਹੈ?', type: 'mcq', options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law"], punjabiOptions: ["ਨਿਊਟਨ ਦਾ ਪਹਿਲਾ ਨਿਯਮ", "ਨਿਊਟਨ ਦਾ ਦੂਜਾ ਨਿਯਮ", "ਨਿਊਟਨ ਦਾ ਤੀਜਾ ਨਿਯਮ"], correctAnswer: 2 },
+        { id: 'pq1q9', text: 'Inertia is the tendency of an object to resist a change in its...', punjabiText: 'ਜੜਤਾ ਕਿਸੇ ਵਸਤੂ ਦੀ ਇਸ ਵਿੱਚ ਤਬਦੀਲੀ ਦਾ ਵਿਰੋਧ ਕਰਨ ਦੀ ਪ੍ਰਵਿਰਤੀ ਹੈ...', type: 'mcq', options: ['state of motion', 'mass', 'volume'], punjabiOptions: ['ਗਤੀ ਦੀ ਅਵਸਥਾ', 'ਪੁੰਜ', 'ਆਇਤਨ'], correctAnswer: 0 },
+        { id: 'pq1q10', text: 'A heavier object requires more force to move. This relates to which law?', punjabiText: 'ਇੱਕ ਭਾਰੀ ਵਸਤੂ ਨੂੰ ਹਿਲਾਉਣ ਲਈ ਵਧੇਰੇ ਬਲ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। ਇਹ ਕਿਸ ਨਿਯਮ ਨਾਲ ਸਬੰਧਤ ਹੈ?', type: 'mcq', options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law"], punjabiOptions: ["ਨਿਊਟਨ ਦਾ ਪਹਿਲਾ ਨਿਯਮ", "ਨਿਊਟਨ ਦਾ ਦੂਜਾ ਨਿਯਮ", "ਨਿਊਟਨ ਦਾ ਤੀਜਾ ਨਿਯਮ"], correctAnswer: 1 },
+        { id: 'pq1q11', text: 'What is momentum?', punjabiText: 'ਗਤੀ ਕੀ ਹੈ?', type: 'mcq', options: ['Mass in motion', 'Force in motion', 'Energy in motion'], punjabiOptions: ['ਗਤੀ ਵਿੱਚ ਪੁੰਜ', 'ਗਤੀ ਵਿੱਚ ਬਲ', 'ਗਤੀ ਵਿੱਚ ਊਰਜਾ'], correctAnswer: 0 },
+        { id: 'pq1q12', text: 'The formula for momentum is:', punjabiText: 'ਗਤੀ ਦਾ ਫਾਰਮੂਲਾ ਹੈ:', type: 'mcq', options: ['p = mv', 'p = m/v', 'p = v/m'], punjabiOptions: ['p = mv', 'p = m/v', 'p = v/m'], correctAnswer: 0 },
+        { id: 'pq1q13', text: 'Friction is a force that...', punjabiText: 'ਰਗੜ ਇੱਕ ਬਲ ਹੈ ਜੋ...', type: 'mcq', options: ['opposes motion', 'assists motion', 'creates motion'], punjabiOptions: ['ਗਤੀ ਦਾ ਵਿਰੋਧ ਕਰਦਾ ਹੈ', 'ਗਤੀ ਵਿੱਚ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ', 'ਗਤੀ ਪੈਦਾ ਕਰਦਾ ਹੈ'], correctAnswer: 0 },
+        { id: 'pq1q14', text: 'If the net force on an object is zero, its acceleration will be:', punjabiText: 'ਜੇ ਕਿਸੇ ਵਸਤੂ ਉੱਤੇ ਕੁੱਲ ਬਲ ਸਿਫ਼ਰ ਹੈ, ਤਾਂ ਉਸਦਾ ਪ੍ਰਵੇਗ ਹੋਵੇਗਾ:', type: 'mcq', options: ['Zero', 'Constant', 'Increasing'], punjabiOptions: ['ਸਿਫ਼ਰ', 'ਸਥਿਰ', 'ਵਧ ਰਿਹਾ'], correctAnswer: 0 },
+        { id: 'pq1q15', text: 'A rocket launching is a good example of which law?', punjabiText: 'ਇੱਕ ਰਾਕੇਟ ਦਾ ਲਾਂਚ ਹੋਣਾ ਕਿਸ ਨਿਯਮ ਦੀ ਇੱਕ ਚੰਗੀ ਉਦਾਹਰਣ ਹੈ?', type: 'mcq', options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law"], punjabiOptions: ["ਨਿਊਟਨ ਦਾ ਪਹਿਲਾ ਨਿਯਮ", "ਨਿਊਟਨ ਦਾ ਦੂਜਾ ਨਿਯਮ", "ਨਿਊਟਨ ਦਾ ਤੀਜਾ ਨਿਯਮ"], correctAnswer: 2 },
+        { id: 'pq1q16', text: 'The more massive an object, the greater its...', punjabiText: 'ਜਿੰਨੀ ਜ਼ਿਆਦਾ ਕਿਸੇ ਵਸਤੂ ਦਾ ਪੁੰਜ ਹੁੰਦਾ ਹੈ, ਓਨੀ ਹੀ ਜ਼ਿਆਦਾ ਉਸਦੀ...', type: 'mcq', options: ['inertia', 'velocity', 'acceleration'], punjabiOptions: ['ਜੜਤਾ', 'ਵੇਗ', 'ਪ੍ਰਵੇਗ'], correctAnswer: 0 },
+        { id: 'pq1q17', text: 'Force is a vector quantity, meaning it has both magnitude and...', punjabiText: 'ਬਲ ਇੱਕ ਵੈਕਟਰ ਰਾਸ਼ੀ ਹੈ, ਜਿਸਦਾ ਅਰਥ ਹੈ ਕਿ ਇਸਦਾ ਪਰਿਮਾਣ ਅਤੇ... ਦੋਵੇਂ ਹੁੰਦੇ ਹਨ।', type: 'mcq', options: ['direction', 'mass', 'speed'], punjabiOptions: ['ਦਿਸ਼ਾ', 'ਪੁੰਜ', 'ਗਤੀ'], correctAnswer: 0 },
+        { id: 'pq1q18', text: 'If you double the force on an object, what happens to its acceleration?', punjabiText: 'ਜੇ ਤੁਸੀਂ ਕਿਸੇ ਵਸਤੂ ਉੱਤੇ ਬਲ ਨੂੰ ਦੁੱਗਣਾ ਕਰਦੇ ਹੋ, ਤਾਂ ਉਸਦੇ ਪ੍ਰਵੇਗ ਦਾ ਕੀ ਹੁੰਦਾ ਹੈ?', type: 'mcq', options: ['It halves', 'It doubles', 'It stays the same'], punjabiOptions: ['ਇਹ ਅੱਧਾ ਹੋ ਜਾਂਦਾ ਹੈ', 'ਇਹ ਦੁੱਗਣਾ ਹੋ ਜਾਂਦਾ ਹੈ', 'ਇਹ ਉਹੀ ਰਹਿੰਦਾ ਹੈ'], correctAnswer: 1 },
+        { id: 'pq1q19', text: 'A car suddenly stopping and you lurching forward is an example of:', punjabiText: 'ਇੱਕ ਕਾਰ ਦਾ ਅਚਾਨਕ ਰੁਕਣਾ ਅਤੇ ਤੁਹਾਡਾ ਅੱਗੇ ਨੂੰ ਝੁਕਣਾ ਇਸਦੀ ਇੱਕ ਉਦਾਹਰਣ ਹੈ:', type: 'mcq', options: ['Inertia', 'Momentum', 'Friction'], punjabiOptions: ['ਜੜਤਾ', 'ਗਤੀ', 'ਰਗੜ'], correctAnswer: 0 },
+        { id: 'pq1q20', text: 'Which of these is NOT a force?', punjabiText: 'ਇਹਨਾਂ ਵਿੱਚੋਂ ਕਿਹੜਾ ਇੱਕ ਬਲ ਨਹੀਂ ਹੈ?', type: 'mcq', options: ['Gravity', 'Friction', 'Speed'], punjabiOptions: ['ਗੁਰੁਤਾਕਰਸ਼ਣ', 'ਰਗੜ', 'ਗਤੀ'], correctAnswer: 2 }
+    ]
+};
+const CHEMISTRY_QUIZ_1: Quiz = {
+    id: 'cq1',
+    title: 'Periodic Table Quiz',
+    punjabiTitle: 'ਆਵਰਤੀ ਸਾਰਣੀ ਕਵਿਜ਼',
+    questions: [
+        { id: 'cq1q1', text: 'What is the symbol for Gold?', punjabiText: 'ਸੋਨੇ ਦਾ ਪ੍ਰਤੀਕ ਕੀ ਹੈ?', type: 'mcq', options: ['Ag', 'Au', 'G'], punjabiOptions: ['Ag', 'Au', 'G'], correctAnswer: 1 },
+        { id: 'cq1q2', text: 'Which element is number 1 on the periodic table?', punjabiText: 'ਆਵਰਤੀ ਸਾਰਣੀ ਵਿੱਚ ਕਿਹੜਾ ਤੱਤ ਨੰਬਰ 1 ਉੱਤੇ ਹੈ?', type: 'mcq', options: ['Helium', 'Hydrogen', 'Oxygen'], punjabiOptions: ['ਹੀਲੀਅਮ', 'ਹਾਈਡ੍ਰੋਜਨ', 'ਆਕਸੀਜਨ'], correctAnswer: 1 },
+        { id: 'cq1q3', text: 'What is the symbol for Sodium?', punjabiText: 'ਸੋਡੀਅਮ ਦਾ ਪ੍ਰਤੀਕ ਕੀ ਹੈ?', type: 'mcq', options: ['S', 'So', 'Na'], punjabiOptions: ['S', 'So', 'Na'], correctAnswer: 2 },
+        { id: 'cq1q4', text: 'The horizontal rows on the periodic table are called:', punjabiText: 'ਆਵਰਤੀ ਸਾਰਣੀ ਵਿੱਚ ਖਿਤਿਜੀ ਕਤਾਰਾਂ ਨੂੰ ਕੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ:', type: 'mcq', options: ['Groups', 'Periods', 'Families'], punjabiOptions: ['ਗਰੁੱਪ', 'ਪੀਰੀਅਡ', 'ਪਰਿਵਾਰ'], correctAnswer: 1 },
+        { id: 'cq1q5', text: 'The vertical columns on the periodic table are called:', punjabiText: 'ਆਵਰਤੀ ਸਾਰਣੀ ਵਿੱਚ ਲੰਬਕਾਰੀ ਕਾਲਮਾਂ ਨੂੰ ਕੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ:', type: 'mcq', options: ['Groups', 'Periods', 'Series'], punjabiOptions: ['ਗਰੁੱਪ', 'ਪੀਰੀਅਡ', 'ਲੜੀ'], correctAnswer: 0 },
+        { id: 'cq1q6', text: 'What is the chemical symbol for water?', punjabiText: 'ਪਾਣੀ ਦਾ ਰਸਾਇਣਕ ਪ੍ਰਤੀਕ ਕੀ ਹੈ?', type: 'mcq', options: ['H2O', 'CO2', 'O2'], punjabiOptions: ['H2O', 'CO2', 'O2'], correctAnswer: 0 },
+        { id: 'cq1q7', text: 'Which group is known as the Noble Gases?', punjabiText: 'ਕਿਹੜਾ ਗਰੁੱਪ ਨੋਬਲ ਗੈਸਾਂ ਵਜੋਂ ਜਾਣਿਆ ਜਾਂਦਾ ਹੈ?', type: 'mcq', options: ['Group 1', 'Group 17', 'Group 18'], punjabiOptions: ['ਗਰੁੱਪ 1', 'ਗਰੁੱਪ 17', 'ਗਰੁੱਪ 18'], correctAnswer: 2 },
+        { id: 'cq1q8', text: 'What is the symbol for Iron?', punjabiText: 'ਲੋਹੇ ਦਾ ਪ੍ਰਤੀਕ ਕੀ ਹੈ?', type: 'mcq', options: ['I', 'Ir', 'Fe'], punjabiOptions: ['I', 'Ir', 'Fe'], correctAnswer: 2 },
+        { id: 'cq1q9', text: 'Which of these is a halogen?', punjabiText: 'ਇਹਨਾਂ ਵਿੱਚੋਂ ਕਿਹੜਾ ਇੱਕ ਹੈਲੋਜਨ ਹੈ?', type: 'mcq', options: ['Sodium', 'Chlorine', 'Helium'], punjabiOptions: ['ਸੋਡੀਅਮ', 'ਕਲੋਰੀਨ', 'ਹੀਲੀਅਮ'], correctAnswer: 1 },
+        { id: 'cq1q10', text: 'What is the atomic number of Carbon?', punjabiText: 'ਕਾਰਬਨ ਦਾ ਪਰਮਾਣੂ ਅੰਕ ਕੀ ਹੈ?', type: 'mcq', options: ['6', '12', '14'], punjabiOptions: ['6', '12', '14'], correctAnswer: 0 },
+        { id: 'cq1q11', text: 'What is the symbol for Potassium?', punjabiText: 'ਪੋਟਾਸ਼ੀਅਮ ਦਾ ਪ੍ਰਤੀਕ ਕੀ ਹੈ?', type: 'mcq', options: ['P', 'Po', 'K'], punjabiOptions: ['P', 'Po', 'K'], correctAnswer: 2 },
+        { id: 'cq1q12', text: 'Which element is essential for breathing?', punjabiText: 'ਸਾਹ ਲੈਣ ਲਈ ਕਿਹੜਾ ਤੱਤ ਜ਼ਰੂਰੀ ਹੈ?', type: 'mcq', options: ['Carbon', 'Oxygen', 'Nitrogen'], punjabiOptions: ['ਕਾਰਬਨ', 'ਆਕਸੀਜਨ', 'ਨਾਈਟ੍ਰੋਜਨ'], correctAnswer: 1 },
+        { id: 'cq1q13', text: 'What do elements in the same group have in common?', punjabiText: 'ਇੱਕੋ ਗਰੁੱਪ ਦੇ ਤੱਤਾਂ ਵਿੱਚ ਕੀ ਸਾਂਝਾ ਹੁੰਦਾ ਹੈ?', type: 'mcq', options: ['Same number of protons', 'Same number of valence electrons', 'Same atomic mass'], punjabiOptions: ['ਪ੍ਰੋਟੋਨਾਂ ਦੀ ਇੱਕੋ ਸੰਖਿਆ', 'ਵੈਲੈਂਸ ਇਲੈਕਟ੍ਰਾਨਾਂ ਦੀ ਇੱਕੋ ਸੰਖਿਆ', 'ਇੱਕੋ ਪਰਮਾਣੂ ਪੁੰਜ'], correctAnswer: 1 },
+        { id: 'cq1q14', text: 'What is the symbol for Silver?', punjabiText: 'ਚਾਂਦੀ ਦਾ ਪ੍ਰਤੀਕ ਕੀ ਹੈ?', type: 'mcq', options: ['Si', 'S', 'Ag'], punjabiOptions: ['Si', 'S', 'Ag'], correctAnswer: 2 },
+        { id: 'cq1q15', text: 'Which of these is an alkali metal?', punjabiText: 'ਇਹਨਾਂ ਵਿੱਚੋਂ ਕਿਹੜਾ ਇੱਕ ਅਲਕਲੀ ਧਾਤ ਹੈ?', type: 'mcq', options: ['Calcium', 'Lithium', 'Aluminum'], punjabiOptions: ['ਕੈਲਸ਼ੀਅਮ', 'ਲਿਥੀਅਮ', 'ਐਲੂਮੀਨੀਅਮ'], correctAnswer: 1 },
+        { id: 'cq1q16', text: 'How many periods are there in the periodic table?', punjabiText: 'ਆਵਰਤੀ ਸਾਰਣੀ ਵਿੱਚ ਕਿੰਨੇ ਪੀਰੀਅਡ ਹੁੰਦੇ ਹਨ?', type: 'mcq', options: ['7', '8', '9'], punjabiOptions: ['7', '8', '9'], correctAnswer: 0 },
+        { id: 'cq1q17', text: 'What is the symbol for Lead?', punjabiText: 'ਸਿੱਕੇ ਦਾ ਪ੍ਰਤੀਕ ਕੀ ਹੈ?', type: 'mcq', options: ['L', 'Le', 'Pb'], punjabiOptions: ['L', 'Le', 'Pb'], correctAnswer: 2 },
+        { id: 'cq1q18', text: 'Which element is a liquid at room temperature?', punjabiText: 'ਕਮਰੇ ਦੇ ਤਾਪਮਾਨ ਉੱਤੇ ਕਿਹੜਾ ਤੱਤ ਤਰਲ ਹੁੰਦਾ ਹੈ?', type: 'mcq', options: ['Chlorine', 'Mercury', 'Bromine'], punjabiOptions: ['ਕਲੋਰੀਨ', 'ਪਾਰਾ', 'ਬ੍ਰੋਮਿਨ'], correctAnswer: 1 },
+        { id: 'cq1q19', text: 'What is the most abundant element in the Earth\'s atmosphere?', punjabiText: 'ਧਰਤੀ ਦੇ ਵਾਯੂਮੰਡਲ ਵਿੱਚ ਸਭ ਤੋਂ ਵੱਧ ਮਾਤਰਾ ਵਿੱਚ ਕਿਹੜਾ ਤੱਤ ਹੈ?', type: 'mcq', options: ['Oxygen', 'Nitrogen', 'Carbon Dioxide'], punjabiOptions: ['ਆਕਸੀਜਨ', 'ਨਾਈਟ੍ਰੋਜਨ', 'ਕਾਰਬਨ ਡਾਈਆਕਸਾਈਡ'], correctAnswer: 1 },
+        { id: 'cq1q20', text: 'What is the symbol for Tin?', punjabiText: 'ਟਿਨ ਦਾ ਪ੍ਰਤੀਕ ਕੀ ਹੈ?', type: 'mcq', options: ['T', 'Ti', 'Sn'], punjabiOptions: ['T', 'Ti', 'Sn'], correctAnswer: 2 }
+    ]
+};
+const BIOLOGY_QUIZ_1: Quiz = {
+    id: 'bq1',
+    title: 'Cell Structure Quiz',
+    punjabiTitle: 'ਸੈੱਲ ਬਣਤਰ ਕਵਿਜ਼',
+    questions: [
+        { id: 'bq1q1', text: 'What is the powerhouse of the cell?', punjabiText: 'ਸੈੱਲ ਦਾ ਪਾਵਰਹਾਊਸ ਕੀ ਹੈ?', type: 'mcq', options: ['Nucleus', 'Ribosome', 'Mitochondria'], punjabiOptions: ['ਨਿਊਕਲੀਅਸ', 'ਰਾਈਬੋਸੋਮ', 'ਮਾਈਟੋਕਾਂਡਰੀਆ'], correctAnswer: 2 },
+        { id: 'bq1q2', text: 'Which part of the cell contains the genetic material?', punjabiText: 'ਸੈੱਲ ਦੇ ਕਿਸ ਹਿੱਸੇ ਵਿੱਚ ਜੈਨੇਟਿਕ ਸਮੱਗਰੀ ਹੁੰਦੀ ਹੈ?', type: 'mcq', options: ['Cytoplasm', 'Nucleus', 'Cell Membrane'], punjabiOptions: ['ਸਾਈਟੋਪਲਾਜ਼ਮ', 'ਨਿਊਕਲੀਅਸ', 'ਸੈੱਲ ਝਿੱਲੀ'], correctAnswer: 1 },
+        { id: 'bq1q3', text: 'What is the function of ribosomes?', punjabiText: 'ਰਾਈਬੋਸੋਮ ਦਾ ਕੰਮ ਕੀ ਹੈ?', type: 'mcq', options: ['Energy production', 'Protein synthesis', 'Waste disposal'], punjabiOptions: ['ਊਰਜਾ ਉਤਪਾਦਨ', 'ਪ੍ਰੋਟੀਨ ਸੰਸਲੇਸ਼ਣ', 'ਕੂੜਾ ਨਿਪਟਾਰਾ'], correctAnswer: 1 },
+        { id: 'bq1q4', text: 'Which of these is found in plant cells but not animal cells?', punjabiText: 'ਇਹਨਾਂ ਵਿੱਚੋਂ ਕਿਹੜਾ ਪੌਦਾ ਸੈੱਲਾਂ ਵਿੱਚ ਪਾਇਆ ਜਾਂਦਾ ਹੈ ਪਰ ਜਾਨਵਰ ਸੈੱਲਾਂ ਵਿੱਚ ਨਹੀਂ?', type: 'mcq', options: ['Cell Wall', 'Mitochondria', 'Nucleus'], punjabiOptions: ['ਸੈੱਲ ਕੰਧ', 'ਮਾਈਟੋਕਾਂਡਰੀਆ', 'ਨਿਊਕਲੀਅਸ'], correctAnswer: 0 },
+        { id: 'bq1q5', text: 'What is the jelly-like substance that fills the cell?', punjabiText: 'ਸੈੱਲ ਨੂੰ ਭਰਨ ਵਾਲਾ ਜੈਲੀ ਵਰਗਾ ਪਦਾਰਥ ਕੀ ਹੈ?', type: 'mcq', options: ['Nucleus', 'Cytoplasm', 'Vacuole'], punjabiOptions: ['ਨਿਊਕਲੀਅਸ', 'ਸਾਈਟੋਪਲਾਜ਼ਮ', 'ਵੈਕਿਊਲ'], correctAnswer: 1 },
+        { id: 'bq1q6', text: 'What is the main function of the cell membrane?', punjabiText: 'ਸੈੱਲ ਝਿੱਲੀ ਦਾ ਮੁੱਖ ਕੰਮ ਕੀ ਹੈ?', type: 'mcq', options: ['To produce energy', 'To control what enters and leaves the cell', 'To store water'], punjabiOptions: ['ਊਰਜਾ ਪੈਦਾ ਕਰਨਾ', 'ਸੈੱਲ ਵਿੱਚ ਕੀ ਦਾਖਲ ਹੁੰਦਾ ਹੈ ਅਤੇ ਕੀ ਬਾਹਰ ਜਾਂਦਾ ਹੈ ਨੂੰ ਨਿਯੰਤਰਿਤ ਕਰਨਾ', 'ਪਾਣੀ ਨੂੰ ਸਟੋਰ ਕਰਨਾ'], correctAnswer: 1 },
+        { id: 'bq1q7', text: 'Photosynthesis occurs in which organelle?', punjabiText: 'ਪ੍ਰਕਾਸ਼ ਸੰਸ਼ਲੇਸ਼ਣ ਕਿਸ ਆਰਗਨੇਲ ਵਿੱਚ ਹੁੰਦਾ ਹੈ?', type: 'mcq', options: ['Mitochondria', 'Chloroplast', 'Ribosome'], punjabiOptions: ['ਮਾਈਟੋਕਾਂਡਰੀਆ', 'ਕਲੋਰੋਪਲਾਸਟ', 'ਰਾਈਬੋਸੋਮ'], correctAnswer: 1 },
+        { id: 'bq1q8', text: 'Which organelle is responsible for breaking down waste?', punjabiText: 'ਕਿਹੜਾ ਆਰਗਨੇਲ ਕੂੜੇ ਨੂੰ ਤੋੜਨ ਲਈ ਜ਼ਿੰਮੇਵਾਰ ਹੈ?', type: 'mcq', options: ['Lysosome', 'Golgi apparatus', 'Endoplasmic reticulum'], punjabiOptions: ['ਲਾਈਸੋਸੋਮ', 'ਗੋਲਗੀ ਉਪਕਰਣ', 'ਐਂਡੋਪਲਾਜ਼ਮਿਕ ਰੈਟੀਕੁਲਮ'], correctAnswer: 0 },
+        { id: 'bq1q9', text: 'What are the basic building blocks of life?', punjabiText: 'ਜੀਵਨ ਦੇ ਮੁੱਢਲੇ ਨਿਰਮਾਣ ਬਲਾਕ ਕੀ ਹਨ?', type: 'mcq', options: ['Tissues', 'Organs', 'Cells'], punjabiOptions: ['ਟਿਸ਼ੂ', 'ਅੰਗ', 'ਸੈੱਲ'], correctAnswer: 2 },
+        { id: 'bq1q10', text: 'Which of these is a prokaryotic cell?', punjabiText: 'ਇਹਨਾਂ ਵਿੱਚੋਂ ਕਿਹੜਾ ਇੱਕ ਪ੍ਰੋਕੈਰੀਓਟਿਕ ਸੈੱਲ ਹੈ?', type: 'mcq', options: ['Bacteria', 'Plant cell', 'Animal cell'], punjabiOptions: ['ਬੈਕਟੀਰੀਆ', 'ਪੌਦਾ ਸੈੱਲ', 'ਜਾਨਵਰ ਸੈੱਲ'], correctAnswer: 0 },
+        { id: 'bq1q11', text: 'The large storage sac in a plant cell is the:', punjabiText: 'ਇੱਕ ਪੌਦਾ ਸੈੱਲ ਵਿੱਚ ਵੱਡਾ ਸਟੋਰੇਜ ਥੈਲਾ ਹੈ:', type: 'mcq', options: ['Nucleus', 'Central Vacuole', 'Chloroplast'], punjabiOptions: ['ਨਿਊਕਲੀਅਸ', 'ਕੇਂਦਰੀ ਵੈਕਿਊਲ', 'ਕਲੋਰੋਪਲਾਸਟ'], correctAnswer: 1 },
+        { id: 'bq1q12', text: 'What does DNA stand for?', punjabiText: 'DNA ਦਾ ਪੂਰਾ ਨਾਮ ਕੀ ਹੈ?', type: 'mcq', options: ['Deoxyribonucleic acid', 'Ribonucleic acid', 'Deoxyribo nutrient acid'], punjabiOptions: ['ਡੀਆਕਸੀਰਾਈਬੋਨਿਊਕਲਿਕ ਐਸਿਡ', 'ਰਾਈਬੋਨਿਊਕਲਿਕ ਐਸਿਡ', 'ਡੀਆਕਸੀਰਾਈਬੋ ਪੋਸ਼ਕ ਤੱਤ ਐਸਿਡ'], correctAnswer: 0 },
+        { id: 'bq1q13', text: 'Which organelle packages and ships proteins?', punjabiText: 'ਕਿਹੜਾ ਆਰਗਨੇਲ ਪ੍ਰੋਟੀਨ ਨੂੰ ਪੈਕੇਜ ਅਤੇ ਭੇਜਦਾ ਹੈ?', type: 'mcq', options: ['Ribosome', 'Golgi apparatus', 'Mitochondria'], punjabiOptions: ['ਰਾਈਬੋਸੋਮ', 'ਗੋਲਗੀ ਉਪਕਰਣ', 'ਮਾਈਟੋਕਾਂਡਰੀਆ'], correctAnswer: 1 },
+        { id: 'bq1q14', text: 'The process of cell division is called:', punjabiText: 'ਸੈੱਲ ਵੰਡ ਦੀ ਪ੍ਰਕਿਰਿਆ ਨੂੰ ਕੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ:', type: 'mcq', options: ['Mitosis', 'Meiosis', 'Photosynthesis'], punjabiOptions: ['ਮਾਈਟੋਸਿਸ', 'ਮਿਓਸਿਸ', 'ਪ੍ਰਕਾਸ਼ ਸੰਸ਼ਲੇਸ਼ਣ'], correctAnswer: 0 },
+        { id: 'bq1q15', text: 'What gives plant cells their rigid structure?', punjabiText: 'ਕੀ ਪੌਦਾ ਸੈੱਲਾਂ ਨੂੰ ਉਹਨਾਂ ਦੀ ਸਖ਼ਤ ਬਣਤਰ ਦਿੰਦਾ ਹੈ?', type: 'mcq', options: ['Cell membrane', 'Cytoplasm', 'Cell wall'], punjabiOptions: ['ਸੈੱਲ ਝਿੱਲੀ', 'ਸਾਈਟੋਪਲਾਜ਼ਮ', 'ਸੈੱਲ ਕੰਧ'], correctAnswer: 2 },
+        { id: 'bq1q16', text: 'Humans are made of which type of cells?', punjabiText: 'ਮਨੁੱਖ ਕਿਸ ਕਿਸਮ ਦੇ ਸੈੱਲਾਂ ਦੇ ਬਣੇ ਹੁੰਦੇ ਹਨ?', type: 'mcq', options: ['Prokaryotic', 'Eukaryotic', 'Bacterial'], punjabiOptions: ['ਪ੍ਰੋਕੈਰੀਓਟਿਕ', 'ਯੂਕੇਰੀਓਟਿਕ', 'ਬੈਕਟੀਰੀਅਲ'], correctAnswer: 1 },
+        { id: 'bq1q17', text: 'What is the control center of the cell?', punjabiText: 'ਸੈੱਲ ਦਾ ਕੰਟਰੋਲ ਕੇਂਦਰ ਕੀ ਹੈ?', type: 'mcq', options: ['Nucleus', 'Mitochondria', 'Cytoplasm'], punjabiOptions: ['ਨਿਊਕਲੀਅਸ', 'ਮਾਈਟੋਕਾਂਡਰੀਆ', 'ਸਾਈਟੋਪਲਾਜ਼ਮ'], correctAnswer: 0 },
+        { id: 'bq1q18', text: 'Which of these is NOT part of the cell theory?', punjabiText: 'ਇਹਨਾਂ ਵਿੱਚੋਂ ਕਿਹੜਾ ਸੈੱਲ ਸਿਧਾਂਤ ਦਾ ਹਿੱਸਾ ਨਹੀਂ ਹੈ?', type: 'mcq', options: ['All living things are made of cells', 'Cells are the basic unit of life', 'All cells have a nucleus'], punjabiOptions: ['ਸਾਰੀਆਂ ਜੀਵਿਤ ਚੀਜ਼ਾਂ ਸੈੱਲਾਂ ਦੀਆਂ ਬਣੀਆਂ ਹੁੰਦੀਆਂ ਹਨ', 'ਸੈੱਲ ਜੀਵਨ ਦੀ ਮੁੱਢਲੀ ਇਕਾਈ ਹਨ', 'ਸਾਰੇ ਸੈੱਲਾਂ ਵਿੱਚ ਇੱਕ ਨਿਊਕਲੀਅਸ ਹੁੰਦਾ ਹੈ'], correctAnswer: 2 },
+        { id: 'bq1q19', text: 'The network of tubes that transports materials is the:', punjabiText: 'ਸਮੱਗਰੀ ਦੀ ਢੋਆ-ਢੁਆਈ ਕਰਨ ਵਾਲੇ ਟਿਊਬਾਂ ਦਾ ਨੈੱਟਵਰਕ ਹੈ:', type: 'mcq', options: ['Golgi apparatus', 'Endoplasmic reticulum', 'Lysosome'], punjabiOptions: ['ਗੋਲਗੀ ਉਪਕਰਣ', 'ਐਂਡੋਪਲਾਜ਼ਮਿਕ ਰੈਟੀਕੁਲਮ', 'ਲਾਈਸੋਸੋਮ'], correctAnswer: 1 },
+        { id: 'bq1q20', text: 'What is the green pigment in plant cells called?', punjabiText: 'ਪੌਦਾ ਸੈੱਲਾਂ ਵਿੱਚ ਹਰੇ ਰੰਗ ਦੇ ਪਿਗਮੈਂਟ ਨੂੰ ਕੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ?', type: 'mcq', options: ['Chlorophyll', 'Cyanide', 'Chloroplast'], punjabiOptions: ['ਕਲੋਰੋਫਿਲ', 'ਸਾਈਨਾਈਡ', 'ਕਲੋਰੋਪਲਾਸਟ'], correctAnswer: 0 }
+    ]
+};
+const PUNJABI_QUIZ_1: Quiz = {
+    id: 'puq1',
+    title: 'Punjabi Grammar Quiz',
+    punjabiTitle: 'ਪੰਜਾਬੀ ਵਿਆਕਰਨ ਕਵਿਜ਼',
+    questions: [
+        { id: 'puq1q1', text: 'ਕ੍ਰਿਆ ਕੀ ਹੈ?', punjabiText: 'ਕ੍ਰਿਆ ਕੀ ਹੈ?', type: 'mcq', options: ['ਨਾਮ', 'ਪੜਨਾਂਵ', 'ਕੰਮ'], punjabiOptions: ['ਨਾਮ', 'ਪੜਨਾਂਵ', 'ਕੰਮ'], correctAnswer: 2 },
+        { id: 'puq1q2', text: 'ਜੋ ਸ਼ਬਦ ਨਾਂਵ ਦੀ ਥਾਂ ਵਰਤਿਆ ਜਾਵੇ, ਉਸਨੂੰ ਕੀ ਕਹਿੰਦੇ ਹਨ?', punjabiText: 'ਜੋ ਸ਼ਬਦ ਨਾਂਵ ਦੀ ਥਾਂ ਵਰਤਿਆ ਜਾਵੇ, ਉਸਨੂੰ ਕੀ ਕਹਿੰਦੇ ਹਨ?', type: 'mcq', options: ['ਵਿਸ਼ੇਸ਼ਣ', 'ਪੜਨਾਂਵ', 'ਕਿਰਿਆ'], punjabiOptions: ['ਵਿਸ਼ੇਸ਼ਣ', 'ਪੜਨਾਂਵ', 'ਕਿਰਿਆ'], correctAnswer: 1 },
+        { id: 'puq1q3', text: 'ਪੰਜਾਬੀ ਵਰਣਮਾਲਾ ਵਿੱਚ ਕਿੰਨੇ ਅੱਖਰ ਹਨ?', punjabiText: 'ਪੰਜਾਬੀ ਵਰਣਮਾਲਾ ਵਿੱਚ ਕਿੰਨੇ ਅੱਖਰ ਹਨ?', type: 'mcq', options: ['35', '40', '41'], punjabiOptions: ['35', '40', '41'], correctAnswer: 2 },
+        { id: 'puq1q4', text: 'ਜੋ ਸ਼ਬਦ ਨਾਂਵ ਜਾਂ ਪੜਨਾਂਵ ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ ਦੱਸੇ, ਉਸਨੂੰ ਕੀ ਕਹਿੰਦੇ ਹਨ?', punjabiText: 'ਜੋ ਸ਼ਬਦ ਨਾਂਵ ਜਾਂ ਪੜਨਾਂਵ ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ ਦੱਸੇ, ਉਸਨੂੰ ਕੀ ਕਹਿੰਦੇ ਹਨ?', type: 'mcq', options: ['ਵਿਸ਼ੇਸ਼ਣ', 'ਸੰਬੰਧਕ', 'ਯੋਜਕ'], punjabiOptions: ['ਵਿਸ਼ੇਸ਼ਣ', 'ਸੰਬੰਧਕ', 'ਯੋਜਕ'], correctAnswer: 0 },
+        { id: 'puq1q5', text: '‘ਉਹ’ ਕਿਹੜਾ ਪੁਰਖ ਹੈ?', punjabiText: '‘ਉਹ’ ਕਿਹੜਾ ਪੁਰਖ ਹੈ?', type: 'mcq', options: ['ਪਹਿਲਾ ਪੁਰਖ', 'ਦੂਜਾ ਪੁਰਖ', 'ਤੀਜਾ ਪੁਰਖ'], punjabiOptions: ['ਪਹਿਲਾ ਪੁਰਖ', 'ਦੂਜਾ ਪੁਰਖ', 'ਤੀਜਾ ਪੁਰਖ'], correctAnswer: 2 },
+        { id: 'puq1q6', text: 'ਲਿੰਗ ਕਿੰਨੀ ਪ੍ਰਕਾਰ ਦੇ ਹੁੰਦੇ ਹਨ?', punjabiText: 'ਲਿੰਗ ਕਿੰਨੀ ਪ੍ਰਕਾਰ ਦੇ ਹੁੰਦੇ ਹਨ?', type: 'mcq', options: ['ਦੋ', 'ਤਿੰਨ', 'ਚਾਰ'], punjabiOptions: ['ਦੋ', 'ਤਿੰਨ', 'ਚਾਰ'], correctAnswer: 0 },
+        { id: 'puq1q7', text: '‘ਮੁੰਡਾ’ ਸ਼ਬਦ ਦਾ ਇਸਤਰੀ ਲਿੰਗ ਕੀ ਹੈ?', punjabiText: '‘ਮੁੰਡਾ’ ਸ਼ਬਦ ਦਾ ਇਸਤਰੀ ਲਿੰਗ ਕੀ ਹੈ?', type: 'mcq', options: ['ਮੁੰਡੀ', 'ਕੁੜੀ', 'ਬਾਲਿਕਾ'], punjabiOptions: ['ਮੁੰਡੀ', 'ਕੁੜੀ', 'ਬਾਲਿਕਾ'], correctAnswer: 1 },
+        { id: 'puq1q8', text: 'ਵਚਨ ਕਿੰਨੀ ਪ੍ਰਕਾਰ ਦੇ ਹੁੰਦੇ ਹਨ?', punjabiText: 'ਵਚਨ ਕਿੰਨੀ ਪ੍ਰਕਾਰ ਦੇ ਹੁੰਦੇ ਹਨ?', type: 'mcq', options: ['ਇੱਕ', 'ਦੋ', 'ਤਿੰਨ'], punjabiOptions: ['ਇੱਕ', 'ਦੋ', 'ਤਿੰਨ'], correctAnswer: 1 },
+        { id: 'puq1q9', text: '‘ਕਿਤਾਬ’ ਦਾ ਬਹੁ-ਵਚਨ ਕੀ ਹੈ?', punjabiText: '‘ਕਿਤਾਬ’ ਦਾ ਬਹੁ-ਵਚਨ ਕੀ ਹੈ?', type: 'mcq', options: ['ਕਿਤਾਬਾਂ', 'ਕਿਤਾਬੋਂ', 'ਕਿਤਾਬੇ'], punjabiOptions: ['ਕਿਤਾਬਾਂ', 'ਕਿਤਾਬੋਂ', 'ਕਿਤਾਬੇ'], correctAnswer: 0 },
+        { id: 'puq1q10', text: 'ਕਾਰਕ ਕਿੰਨੀ ਪ੍ਰਕਾਰ ਦੇ ਹੁੰਦੇ ਹਨ?', punjabiText: 'ਕਾਰਕ ਕਿੰਨੀ ਪ੍ਰਕਾਰ ਦੇ ਹੁੰਦੇ ਹਨ?', type: 'mcq', options: ['ਛੇ', 'ਸੱਤ', 'ਅੱਠ'], punjabiOptions: ['ਛੇ', 'ਸੱਤ', 'ਅੱਠ'], correctAnswer: 2 },
+        { id: 'puq1q11', text: '‘ਨੇ’ ਕਿਹੜਾ ਕਾਰਕ ਹੈ?', punjabiText: '‘ਨੇ’ ਕਿਹੜਾ ਕਾਰਕ ਹੈ?', type: 'mcq', options: ['ਕਰਤਾ ਕਾਰਕ', 'ਕਰਮ ਕਾਰਕ', 'ਕਰਨ ਕਾਰਕ'], punjabiOptions: ['ਕਰਤਾ ਕਾਰਕ', 'ਕਰਮ ਕਾਰਕ', 'ਕਰਨ ਕਾਰਕ'], correctAnswer: 0 },
+        { id: 'puq1q12', text: 'ਕਾਲ ਕਿੰਨੀ ਪ੍ਰਕਾਰ ਦੇ ਹੁੰਦੇ ਹਨ?', punjabiText: 'ਕਾਲ ਕਿੰਨੀ ਪ੍ਰਕਾਰ ਦੇ ਹੁੰਦੇ ਹਨ?', type: 'mcq', options: ['ਦੋ', 'ਤਿੰਨ', 'ਚਾਰ'], punjabiOptions: ['ਦੋ', 'ਤਿੰਨ', 'ਚਾਰ'], correctAnswer: 1 },
+        { id: 'puq1q13', text: '‘ਉਹ ਖੇਡ ਰਿਹਾ ਹੈ।’ - ਇਹ ਕਿਹੜਾ ਕਾਲ ਹੈ?', punjabiText: '‘ਉਹ ਖੇਡ ਰਿਹਾ ਹੈ।’ - ਇਹ ਕਿਹੜਾ ਕਾਲ ਹੈ?', type: 'mcq', options: ['ਭੂਤਕਾਲ', 'ਵਰਤਮਾਨ ਕਾਲ', 'ਭਵਿੱਖਤ ਕਾਲ'], punjabiOptions: ['ਭੂਤਕਾਲ', 'ਵਰਤਮਾਨ ਕਾਲ', 'ਭਵਿੱਖਤ ਕਾਲ'], correctAnswer: 1 },
+        { id: 'puq1q14', text: 'ਜੋ ਸ਼ਬਦ ਦੋ ਸ਼ਬਦਾਂ ਜਾਂ ਵਾਕਾਂ ਨੂੰ ਜੋੜੇ, ਉਸਨੂੰ ਕੀ ਕਹਿੰਦੇ ਹਨ?', punjabiText: 'ਜੋ ਸ਼ਬਦ ਦੋ ਸ਼ਬਦਾਂ ਜਾਂ ਵਾਕਾਂ ਨੂੰ ਜੋੜੇ, ਉਸਨੂੰ ਕੀ ਕਹਿੰਦੇ ਹਨ?', type: 'mcq', options: ['ਸੰਬੰਧਕ', 'ਯੋਜਕ', 'ਵਿਸਮਿਕ'], punjabiOptions: ['ਸੰਬੰਧਕ', 'ਯੋਜਕ', 'ਵਿਸਮਿਕ'], correctAnswer: 1 },
+        { id: 'puq1q15', text: '‘ਹਾਏ!’ ਕਿਹੜਾ ਵਿਸਮਿਕ ਹੈ?', punjabiText: '‘ਹਾਏ!’ ਕਿਹੜਾ ਵਿਸਮਿਕ ਹੈ?', type: 'mcq', options: ['ਖੁਸ਼ੀ ਦਾ', 'ਗਮੀ ਦਾ', 'ਹੈਰਾਨੀ ਦਾ'], punjabiOptions: ['ਖੁਸ਼ੀ ਦਾ', 'ਗਮੀ ਦਾ', 'ਹੈਰਾਨੀ ਦਾ'], correctAnswer: 1 },
+        { id: 'puq1q16', text: '‘ਘੋੜਾ’ ਸ਼ਬਦ ਦਾ ਸਹੀ ਲਿੰਗ ਬਦਲੋ।', punjabiText: '‘ਘੋੜਾ’ ਸ਼ਬਦ ਦਾ ਸਹੀ ਲਿੰਗ ਬਦਲੋ।', type: 'mcq', options: ['ਘੋੜੀ', 'ਘੋੜੇ', 'ਘੋੜੀਆਂ'], punjabiOptions: ['ਘੋੜੀ', 'ਘੋੜੇ', 'ਘੋੜੀਆਂ'], correctAnswer: 0 },
+        { id: 'puq1q17', text: '‘ਅਧਿਆਪਕ’ ਦਾ ਇਸਤਰੀ ਲਿੰਗ ਕੀ ਹੈ?', punjabiText: '‘ਅਧਿਆਪਕ’ ਦਾ ਇਸਤਰੀ ਲਿੰਗ ਕੀ ਹੈ?', type: 'mcq', options: ['ਅਧਿਆਪਕਾ', 'ਅਧਿਆਪਕੀ', 'ਅਧਿਆਪਕਣ'], punjabiOptions: ['ਅਧਿਆਪਕਾ', 'ਅਧਿਆਪਕੀ', 'ਅਧਿਆਪਕਣ'], correctAnswer: 0 },
+        { id: 'puq1q18', text: '‘ਮੈਂ’ ਕਿਹੜਾ ਪੁਰਖ ਹੈ?', punjabiText: '‘ਮੈਂ’ ਕਿਹੜਾ ਪੁਰਖ ਹੈ?', type: 'mcq', options: ['ਪਹਿਲਾ ਪੁਰਖ', 'ਦੂਜਾ ਪੁਰਖ', 'ਤੀਜਾ ਪੁਰਖ'], punjabiOptions: ['ਪਹਿਲਾ ਪੁਰਖ', 'ਦੂਜਾ ਪੁਰਖ', 'ਤੀਜਾ ਪੁਰਖ'], correctAnswer: 0 },
+        { id: 'puq1q19', text: '‘ਸੁੰਦਰ’ ਸ਼ਬਦ ਕੀ ਹੈ?', punjabiText: '‘ਸੁੰਦਰ’ ਸ਼ਬਦ ਕੀ ਹੈ?', type: 'mcq', options: ['ਨਾਂਵ', 'ਪੜਨਾਂਵ', 'ਵਿਸ਼ੇਸ਼ਣ'], punjabiOptions: ['ਨਾਂਵ', 'ਪੜਨਾਂਵ', 'ਵਿਸ਼ੇਸ਼ਣ'], correctAnswer: 2 },
+        { id: 'puq1q20', text: '‘ਅਤੇ’ ਸ਼ਬਦ ਕੀ ਹੈ?', punjabiText: '‘ਅਤੇ’ ਸ਼ਬਦ ਕੀ ਹੈ?', type: 'mcq', options: ['ਸੰਬੰਧਕ', 'ਯੋਜਕ', 'ਵਿਸਮਿਕ'], punjabiOptions: ['ਸੰਬੰਧਕ', 'ਯੋਜਕ', 'ਵਿਸਮਿਕ'], correctAnswer: 1 }
+    ]
+};
+
 
 
 // --- SUBJECTS ---

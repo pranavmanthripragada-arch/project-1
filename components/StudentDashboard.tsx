@@ -295,11 +295,11 @@ const QuizModal: React.FC<{ isOpen: boolean; onClose: () => void; quiz: Quiz; is
                 <div>
                     <div className="mb-4">
                         <p className="text-slate-400">Question {currentQuestionIndex + 1} of {quiz.questions.length}</p>
-                        <h3 className="text-lg md:text-xl font-semibold mt-1">{currentQuestion.text}</h3>
+                        <h3 className="text-lg md:text-xl font-semibold mt-1">{isBilingual ? currentQuestion.punjabiText : currentQuestion.text}</h3>
                     </div>
                     {currentQuestion.type === 'mcq' && (
                         <div className="space-y-3">
-                            {currentQuestion.options?.map((option, index) => (
+                            {(isBilingual ? currentQuestion.punjabiOptions : currentQuestion.options)?.map((option, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleAnswerSelect(index)}
